@@ -3,6 +3,12 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const podRoutes = require('./routes/podRoutes');
+const trackingRoutes = require('./routes/trackingRoutes');
+const userRoutes = require('./routes/userRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
+
+
 
 dotenv.config();
 connectDB();
@@ -19,6 +25,12 @@ app.get('/', (req, res) => {
 
 // <-- 2. UTILISATION DES ROUTES -->
 app.use('/api/pods', podRoutes); 
+app.use('/api/tracking', trackingRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/payment', paymentRoutes);
+
+
 // À chaque fois que le frontend appellera /api/pods, le serveur ira chercher podRoutes.js
 
 const PORT = process.env.PORT || 5000;

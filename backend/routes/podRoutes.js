@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { getPods, createPod } = require('../controllers/podController');
+const { getPods, getPodById, createPod } = require('../controllers/podController');
 
-// Quand on va sur '/' (qui sera /api/pods), on utilise GET pour lire et POST pour créer
 router.route('/')
     .get(getPods)
     .post(createPod);
+
+// NOUVELLE ROUTE : Pour afficher un seul produit
+router.route('/:id')
+    .get(getPodById);
 
 module.exports = router;
